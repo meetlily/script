@@ -12,17 +12,16 @@ EOF
 source ~/.bash_aliases
 mkdir ~/.kube
 
-## Install snapd and set forwarding to accept for iptables
-sudo iptables -P FORWARD ACCEPT
-sudo apt-get install iptables-persistent -y
+
 
 # Install Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
-newgrp docker >> /dev/null
-exit
-cd ~/
+newgrp docker <<EOF
+echo "${USER} added to the  docker"
+id
+EOF
 
 # Install Pyenv
 curl https://pyenv.run | bash
@@ -51,9 +50,11 @@ sudo snap install microk8s --classic
 
 sudo usermod -a -G microk8s $USER
 sudo chown -f -R $USER ~/.kube
-newgrp microk8s >> /dev/null
-exit
-cd ~/
+newgrp docker <<EOF
+echo "${USER} added to the  microk8s"
+id
+EOF
+
 microk8s status --wait-ready
 microk8s inspect
 microk8s status
