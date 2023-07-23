@@ -53,7 +53,7 @@ cd ~/
 microk8s status --wait-ready
 microk8s inspect
 microk8s status
-microk8s enable dns storage ingress
+microk8s enable dns hostpath-storage ingress
 
 source ~/.bash_aliases
 k get all -A
