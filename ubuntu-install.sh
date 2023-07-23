@@ -1,26 +1,45 @@
 #!/bin/bash 
+#sudo su - root
+sudo apt update -y
+sudo apt install curl git docker.io -y
 
-sudo apt update && sudo apt upgrade -y
-sudo apt install curl git -y
 
-# Add alias for kubernetes
-cat << 'EOF' | tee ~/.bash_aliases
-    alias m='microk8s'
-    alias k='m kubectl'
-    alias kubectl='m kubectl'
-EOF
-source ~/.bash_aliases
 mkdir ~/.kube
-
+touch ~/.bash_aliases
+touch ~/.bashrc
 
 # Install Docker
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
+# curl -fsSL https://get.docker.com -o get-docker.sh
+# sudo sh get-docker.sh
 sudo usermod -aG docker $USER
 newgrp docker <<EOF
 echo "${USER} added to the  docker"
 id
 EOF
+
+sudo snap install microk8s --classic
+
+sudo usermod -a -G microk8s $USER
+sudo chown -f -R $USER ~/.kube
+newgrp microk8s <<EOF
+echo "${USER} added to the  microk8s"
+id
+EOF
+
+microk8s status --wait-ready
+microk8s inspect
+microk8s status
+microk8s enable dns hostpath-storage ingress
+
+cat << EOF | tee ~/.bash_aliases
+    alias m='microk8s'
+    alias k='m kubectl'
+    alias kubectl='m kubectl'
+EOF
+source ~/.bash_aliases
+
+# Add alias for kubernetes
+k get all -A
 
 # Install Pyenv
 curl https://pyenv.run | bash
@@ -45,22 +64,9 @@ pyenv install 3.9
 pyenv global 3.9
 
 # Install MicroK8s
-sudo snap install microk8s --classic
 
-sudo usermod -a -G microk8s $USER
-sudo chown -f -R $USER ~/.kube
-newgrp docker <<EOF
-echo "${USER} added to the  microk8s"
-id
-EOF
 
-microk8s status --wait-ready
-microk8s inspect
-microk8s status
-microk8s enable dns hostpath-storage ingress
 
-source ~/.bash_aliases
-k get all -A
 
 
 
