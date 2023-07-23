@@ -1,6 +1,6 @@
 #!/bin/bash 
 #sudo su - root
-sudo apt update -y
+# sudo apt update -y
 sudo apt install curl git docker.io -y
 
 
