@@ -29,7 +29,7 @@ EOF
 microk8s status --wait-ready
 microk8s inspect
 microk8s status
-microk8s enable dns hostpath-storage ingress
+microk8s enable helm3 dns hostpath-storage ingress
 
 cat << EOF | tee ~/.bash_aliases
     alias m='microk8s'
