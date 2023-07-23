@@ -14,9 +14,9 @@ touch ~/.bashrc
 # echo "${USER} added to the  docker"
 # id
 # EOF
-curl -fsSL https://get.docker.com -o | bash
+curl -fsSL https://get.docker.com | bash
 # Production
-sudo snap install microk8s --classic --channel=1.22/stable
+sudo snap install microk8s --classic
 
 # Development
 # sudo snap install microk8s --classic
