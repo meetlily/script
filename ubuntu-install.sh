@@ -12,6 +12,10 @@ EOF
 
 mkdir ~/.kube
 
+## Install snapd and set forwarding to accept for iptables
+sudo iptables -P FORWARD ACCEPT
+sudo apt-get install iptables-persistent -y
+
 # Install Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
@@ -48,5 +52,6 @@ newgrp microk8s >> /dev/null
 cd ~/
 microk8s status --wait-ready
 microk8s enable dns storage
+
 
 
