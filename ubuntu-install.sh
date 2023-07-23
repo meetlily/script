@@ -9,7 +9,7 @@ cat << 'EOF' | tee ~/.bash_aliases
     alias k='m kubectl'
     alias kubectl='m kubectl'
 EOF
-
+source ~/.bash_aliases
 mkdir ~/.kube
 
 ## Install snapd and set forwarding to accept for iptables
@@ -21,6 +21,7 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
 newgrp docker >> /dev/null
+exit
 cd ~/
 
 # Install Pyenv
@@ -51,6 +52,7 @@ sudo snap install microk8s --classic
 sudo usermod -a -G microk8s $USER
 sudo chown -f -R $USER ~/.kube
 newgrp microk8s >> /dev/null
+exit
 cd ~/
 microk8s status --wait-ready
 microk8s inspect
