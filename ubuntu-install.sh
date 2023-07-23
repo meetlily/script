@@ -51,7 +51,9 @@ sudo chown -f -R $USER ~/.kube
 newgrp microk8s >> /dev/null
 cd ~/
 microk8s status --wait-ready
-microk8s enable dns storage
+microk8s inspect
+microk8s status
+microk8s enable dns storage ingress
 
 
 
