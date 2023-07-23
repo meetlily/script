@@ -8,7 +8,8 @@ cat << 'EOF' | tee ~/.bash_aliases
     alias m='microk8s'
     alias k='m kubectl'
     alias kubectl='m kubectl'
-    EOF
+EOF
+
 mkdir ~/.kube
 
 # Install Docker
