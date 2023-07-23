@@ -48,12 +48,15 @@ sudo snap install microk8s --classic
 
 sudo usermod -a -G microk8s $USER
 sudo chown -f -R $USER ~/.kube
-newgrp microk8s >> /dev/null
+newgrp microk8s
 cd ~/
 microk8s status --wait-ready
 microk8s inspect
 microk8s status
 microk8s enable dns storage ingress
+
+source ~/.bash_aliases
+k get all -A
 
 
 
