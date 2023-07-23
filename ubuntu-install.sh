@@ -3,6 +3,14 @@
 sudo apt update && sudo apt upgrade -y
 sudo apt install build-essential git -y
 
+# Add alias for kubernetes
+cat << 'EOF' | tee ~/.bash_aliases
+    alias m='microk8s'
+    alias k='m kubectl'
+    alias kubectl='m kubectl'
+    EOF
+mkdir ~/.kube
+
 # Install Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
@@ -32,7 +40,7 @@ pyenv global 3.9
 
 # Install MicroK8s
 sudo snap install microk8s --classic
-mkdir ~/.kube
+
 sudo usermod -a -G microk8s $USER
 sudo chown -f -R $USER ~/.kube
 newgrp microk8s >> /dev/null
@@ -40,9 +48,4 @@ cd ~/
 microk8s status --wait-ready
 microk8s enable dns storage
 
-# Add alias for kubernetes
-cat << 'EOF' | tee ~/.bash_aliases
-    alias m='microk8s'
-    alias k='m kubectl'
-    alias kubectl='m kubectl'
-    EOF
+
