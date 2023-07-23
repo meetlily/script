@@ -7,14 +7,14 @@ mkdir ~/.kube
 touch ~/.bashrc
 
 # Install Docker
-# curl -fsSL https://get.docker.com -o get-docker.sh
+# curl -fsSL https://get.docker.com -o | bash
 # sudo sh get-docker.sh
 # sudo usermod -aG docker $USER
 # newgrp docker <<EOF
 # echo "${USER} added to the  docker"
 # id
 # EOF
-
+curl -fsSL https://get.docker.com -o | bash
 # Production
 sudo snap install microk8s --classic --channel=1.22/stable
 
@@ -32,11 +32,11 @@ sudo microk8s inspect
 sudo microk8s status
 
 # Enable clustering on the first control plane node
-sudo microk8s add-node
-array_tokens=$(sudo microk8s add-node | grep -o "microk8s join .*")
-token=$(echo $join_tokens} |  awk '{print $3}')
-join_token=$(echo "microk8s join "$token)
-sudo $(echo $join_token)
+# sudo microk8s add-node
+# array_tokens=$(sudo microk8s add-node | grep -o "microk8s join .*")
+# token=$(echo $join_tokens} |  awk '{print $3}')
+# join_token=$(echo "microk8s join "$token)
+# sudo $(echo $join_token)
 
 sudo microk8s enable helm3 dns hostpath-storage registry host-access ingress cert-manager
 sudo microk8s kubectl config view --raw > $HOME/.kube/config
