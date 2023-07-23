@@ -35,7 +35,8 @@ sudo snap install microk8s --classic
 mkdir ~/.kube
 sudo usermod -a -G microk8s $USER
 sudo chown -f -R $USER ~/.kube
-newgrp microk8s
+newgrp microk8s >> /dev/null
+cd ~/
 microk8s status --wait-ready
 microk8s enable dns storage
 
