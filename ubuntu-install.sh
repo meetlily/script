@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 sudo apt update && sudo apt upgrade -y
-sudo apt install build-essential git -y
+sudo apt install curl git -y
 
 # Add alias for kubernetes
 cat << 'EOF' | tee ~/.bash_aliases
@@ -20,7 +20,8 @@ sudo apt-get install iptables-persistent -y
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
-newgrp docker
+newgrp docker >> /dev/null
+cd ~/
 
 # Install Pyenv
 curl https://pyenv.run | bash
@@ -49,7 +50,7 @@ sudo snap install microk8s --classic
 
 sudo usermod -a -G microk8s $USER
 sudo chown -f -R $USER ~/.kube
-newgrp microk8s
+newgrp microk8s >> /dev/null
 cd ~/
 microk8s status --wait-ready
 microk8s inspect
