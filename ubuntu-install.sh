@@ -73,7 +73,7 @@ echo "alias kubectl='m kubectl'" >> ~/.bashrc
 
 source ~/.bashrc
 
-k get all -A
+sudo microk8s kubectl get all -A
 
 # microk8s kubectl create ingress my-ingress     --annotation cert-manager.io/cluster-issuer=letsencrypt     --rule 'my-service.example.com/*=my-service:80,tls=my-service-tls'
 
