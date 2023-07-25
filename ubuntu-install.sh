@@ -14,7 +14,7 @@ sudo snap install microk8s --classic
 sudo microk8s status --wait-ready
 sudo microk8s inspect
 sudo microk8s status
-sudo microk8s enable helm3 dns hostpath-storage cert-manager registry host-access ingress metallb
+sudo microk8s enable helm3 dns hostpath-storage host-access cert-manager ingress
 sudo microk8s kubectl config view --raw > $HOME/.kube/config
 
 
