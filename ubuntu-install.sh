@@ -17,8 +17,9 @@ sudo microk8s status
 sudo microk8s enable helm3 dns hostpath-storage host-access
 sudo microk8s kubectl config view --raw > $HOME/.kube/config
 
-sudo microk8s enable ingress cert-manager
-
+sudo microk8s enable ingress 
+sudo microk8s enable cert-manager
+sudo microk8s enable metallb
 
 
 # Add alias for kubernetes
