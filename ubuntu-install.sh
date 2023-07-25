@@ -14,7 +14,7 @@ sudo snap install microk8s --classic
 sudo microk8s status --wait-ready
 sudo microk8s inspect
 sudo microk8s status
-sudo microk8s enable helm3 dns hostpath-storage host-access cert-manager ingress
+sudo microk8s enable helm3 dns hostpath-storage host-access ingress
 sudo microk8s kubectl config view --raw > $HOME/.kube/config
 
 
@@ -25,3 +25,20 @@ echo "alias kubectl='m kubectl'" >> ~/.bashrc
 source ~/.bashrc
 sudo microk8s kubectl get all -A
 sudo swapoff -a
+
+cat <<EOF | sudo microk8s kubectl apply -f -
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: edvillan15@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+    - http01:
+        ingress:
+          class: public
+EOF
