@@ -3,6 +3,11 @@
 # Install git, curl -y
 sudo apt install curl git -y
 
+# Install NFS server
+sudo apt install nfs-kernel-server
+sudo mkdir -p /srv/nfs
+sudo sed -i '$ a /srv/nfs *(rw,sync,no_subtree_check,no_root_squash)' /etc/exports
+
 mkdir ~/.kube
 touch ~/.bashrc
 
@@ -20,6 +25,8 @@ sudo microk8s kubectl config view --raw > $HOME/.kube/config
 sudo microk8s enable ingress 
 sudo microk8s enable cert-manager
 sudo microk8s enable metallb:192.168.0.100-192.168.0.200
+
+
 
 
 # Add alias for kubernetes
