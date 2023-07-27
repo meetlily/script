@@ -7,7 +7,7 @@ sudo snap install core --edge
 sudo snap refresh core --edge
 sudo snap install docker
 sudo snap install microk8s --classic
-sudo apt-get update -y && sudo apt-get upgrade -y
+sudo apt-get update -y
 sudo apt-get install curl git -y
 # Install NFS server
 
