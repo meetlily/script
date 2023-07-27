@@ -4,11 +4,12 @@ export DEBIAN_FRONTEND=noninteractive
 # Install git, curl -y
 sudo snap install core --edge
 sudo snap refresh core --edge
-sudo snap mount microk8s
-sudo apt-get update -y && sudo apt-get upgrade -y
-sudo apt install curl git -y
 sudo snap install docker
 sudo snap install microk8s --classic
+
+sudo apt-get update -y && sudo apt-get upgrade -y
+sudo apt install curl git -y
+
 mkdir ~/.kube
 touch ~/.bashrc
 
