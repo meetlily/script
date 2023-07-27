@@ -1,7 +1,6 @@
 #!/bin/bash
 
-
-export DEBIAN_FRONTEND=noninteractive
+sudo DEBIAN_FRONTEND=noninteractive dpkg --configure -a
 # Install git, curl -y
 sudo snap install core --edge
 sudo snap refresh core --edge
