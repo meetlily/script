@@ -1,10 +1,11 @@
 #!/bin/bash 
 
 # Install git, curl -y
-sudo apt install curl git -y
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install curl git snapd -y
 
 # Install NFS server
-sudo apt install snapd
+
 
 mkdir ~/.kube
 touch ~/.bashrc
