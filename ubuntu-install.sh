@@ -13,7 +13,7 @@ mkdir ~/.kube
 touch ~/.bashrc
 
 # Install Docker
-curl -fsSL https://get.docker.com | bash
+
 
 # Production
 sudo snap install microk8s --classic
