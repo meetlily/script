@@ -11,11 +11,6 @@ sudo snap install microk8s --classic
 mkdir ~/.kube
 touch ~/.bashrc
 
-# Install Docker
-
-
-# Production
-
 sudo microk8s status --wait-ready
 sudo microk8s inspect
 sudo microk8s status
