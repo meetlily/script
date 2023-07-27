@@ -1,6 +1,6 @@
 -#!/bin/bash
 set -e
-source /etc/environment
+export DEBIAN_FRONTEND=noninteractive
 # Install git, curl -y
 sudo apt update -y && sudo apt upgrade -y
 sudo apt install curl git docker.io -y
