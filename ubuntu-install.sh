@@ -3,8 +3,10 @@
 
 export DEBIAN_FRONTEND=noninteractive
 # Install git, curl -y
-sudo apt install curl git docker.io -y
-
+sudo apt-get update -y && sudo apt-get upgrade -y
+sudo apt install curl git -y
+sudo snap install docker
+sudo snap install microk8s --classic
 # Install NFS server
 
 
