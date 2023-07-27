@@ -1,4 +1,4 @@
--#!/bin/bash 
+-#!/bin/sh 
 set -e
 source /etc/environment
 # Install git, curl -y
