@@ -5,7 +5,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get update -y && sudo DEBIAN_FRONTEND=no
 sudo DEBIAN_FRONTEND=noninteractive apt-get install curl git -y
 sudo SNAP_REVISION="" snap install core --edge
 sudo SNAP_REVISION="" snap refresh core --edge
-sudo snap install docker --classic
+sudo snap install docker
 sudo snap install microk8s --classic
 
 
