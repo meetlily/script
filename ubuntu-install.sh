@@ -4,7 +4,7 @@ set -e
 source /etc/environment
 # Install git, curl -y
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install curl git -y
+sudo apt install curl git docker.io -y
 
 # Install NFS server
 
