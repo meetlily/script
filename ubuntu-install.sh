@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo DEBIAN_FRONTEND=noninteractive dpkg --configure -a
-sudo apt-get update -y && sudo apt-get upgrade -y
+sudo DEBIAN_FRONTEND=noninteractive apt-get update -y && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
 # Install git, curl -y
 sudo snap install core --edge
 sudo snap refresh core --edge
