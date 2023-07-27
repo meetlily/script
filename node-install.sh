@@ -8,7 +8,7 @@ sudo snap install docker
 sudo snap install microk8s --classic
 
 sudo apt-get update -y
-sudo apt install curl git -y
+sudo apt-get install curl git -y
 
 mkdir ~/.kube
 touch ~/.bashrc
