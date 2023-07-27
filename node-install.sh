@@ -2,14 +2,11 @@
 
 sudo DEBIAN_FRONTEND=noninteractive dpkg --configure -a
 sudo DEBIAN_FRONTEND=noninteractive apt-get update -y && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
-# Install git, curl -y
-sudo snap install core --edge
-sudo snap refresh core --edge
-sudo snap install docker
+sudo DEBIAN_FRONTEND=noninteractive apt-get install curl git -y
+sudo SNAP_REVISION="" snap install core --edge
+sudo SNAP_REVISION="" snap refresh core --edge
+sudo snap install docker --classic
 sudo snap install microk8s --classic
-
-sudo apt-get update -y && sudo apt-get upgrade -y
-sudo apt-get install curl git -y
 
 mkdir ~/.kube
 touch ~/.bashrc
