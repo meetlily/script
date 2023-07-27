@@ -7,6 +7,7 @@ sudo apt install curl git -y
 sudo apt install nfs-kernel-server
 sudo mkdir -p /srv/nfs
 sudo sed -i '$ a /srv/nfs *(rw,sync,no_subtree_check,no_root_squash)' /etc/exports
+sudo systemctl restart nfs-kernel-server
 
 mkdir ~/.kube
 touch ~/.bashrc
