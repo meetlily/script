@@ -27,9 +27,6 @@ sudo microk8s enable ingress
 sudo microk8s enable cert-manager
 sudo microk8s enable metallb:192.168.0.100-192.168.0.200
 
-
-
-
 # Add alias for kubernetes
 echo "alias m='sudo microk8s'" >> ~/.bashrc
 echo "alias k='m kubectl'" >> ~/.bashrc
@@ -38,7 +35,6 @@ source ~/.bashrc
 sudo microk8s kubectl get all -A
 sudo swapoff -a
 
-sudo microk8s enable metallb:192.168.0.100-192.168.0.200 --unattended
 
 cat <<EOF | sudo microk8s kubectl apply -f -
 apiVersion: cert-manager.io/v1
